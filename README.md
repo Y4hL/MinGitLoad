@@ -1,6 +1,6 @@
 # MinGitLoad  
   
-Minimalistic File Downloader
+Minimalistic File Downloader for Windows  
   
 Basic ``git clone`` for Windows  
   
