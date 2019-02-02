@@ -33,6 +33,8 @@ copy %cd%\tmp\master.zip %dir% /Y >nul
 del /F /Q tmp\master.zip
 del /F /Q tmp\download.ps1
 
+:: Deletes tmp Folder ::
+rd /s /q tmp
+
 :: Goes back to directory used before MinGitLoad.cmd
 cd %tmpdir%
-pause >nul
