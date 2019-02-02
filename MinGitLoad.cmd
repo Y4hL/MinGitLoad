@@ -39,7 +39,7 @@ set /p file_type=File Type (Example: txt, zip):
 :: Creates Temporary Directory ::
 md tmp >nul
 
-:: Copies Download file to tmp Folder
+:: Copies Download file to tmp Folder ::
 copy download.ps1 tmp\download.ps1 >nul
 
 :: Adds Repo Link and Destination Path to tmp\Download.ps1 ::
@@ -48,15 +48,15 @@ echo download %cd%\tmp\%file_name%.%file_type% %repo% >> tmp\download.ps1
 :: Runs Downloader ::
 powershell.exe -File tmp\download.ps1
 
-:: Copies Downloaded file to Destination Path
+:: Copies Downloaded file to Destination Path ::
 copy %cd%\tmp\%file_name%.%file_type% %dir% /Y >nul
 
-:: Deleted Temporary Files
+:: Deleted Temporary Files ::
 del /F /Q tmp\%file_name%.%file_type%
 del /F /Q tmp\download.ps1
 
 :: Deletes tmp Folder ::
 rd /s /q tmp
 
-:: Goes back to directory used before MinGitLoad.cmd
+:: Goes back to directory used before MinGitLoad.cmd ::
 cd %tmpdir%
