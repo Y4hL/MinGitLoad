@@ -13,7 +13,7 @@ Works on any type of file on any website
 
 Example:
 
-``MinGitLoad.cmd github.com/y4hl/mingitload %userprofile%\desktop Package zip``
+``MinGitLoad.cmd github.com/y4hl/mingitload/archive/master.zip %userprofile%\desktop Package zip``
 
 Can be entered manually by just opening MinGitLoad.cmd
 
