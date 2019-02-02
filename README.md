@@ -7,7 +7,7 @@ Basic ``git clone`` for Windows
 Only uses built in Windows file types  
 Works on any type of file on any website
 
-Format:
+# Format:
 
 ``MinGitLoad.cmd website save_directory file_name file_type``
 
