@@ -1,6 +1,6 @@
 # MinGitLoad  
   
-Minimalistic version of https://www.github.com/Y4hL/GitLoad  
+Minimalistic File Downloader
   
 Basic ``git clone`` for Windows  
   
