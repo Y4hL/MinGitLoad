@@ -24,7 +24,7 @@ Examples:
 >> Downloads File as Package.zip  
   
 ``MinGitLoad.cmd github.com/y4hl/mingitload/archive/master.zip %userprofile%\desktop Package txt``  
->> Donwloads File as Package.txt  
+>> Downloads File as Package.txt  
   
 Can be entered manually by just opening MinGitLoad.cmd  
   
