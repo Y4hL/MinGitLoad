@@ -10,14 +10,30 @@ powershell.exe Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy Unrestric
 
 IF [%1] == [] goto :ask
 IF [%2] == [] goto :ask
-IF [%3] == [] goto :ask
-IF [%4] == [] goto :ask
+IF [%3] == [] (
+
+    :: Sets file name and type automatically, if no name or type is given ::
+    set file_type=%~x1
+    set file_name=%~n1
+
+    goto :auto
+)
+IF [%4] == [] (
+
+    :: Sets file type automatically, if no type is given ::
+    set file_type=%~x1
+
+    goto :name
+)
 
 :: IF values are given already, skips asking for values ::
-set repo=%1
-set dir=%2
+set file_type=.%4
+:name
 set file_name=%3
-set file_type=%4
+:auto
+set dir=%2
+set repo=%1
+
 
 goto git
 :ask
@@ -33,6 +49,7 @@ set /p file_name=File Name:
 
 :: Asks for file type (example: txt, zip) ::
 set /p file_type=File Type (Example: txt, zip): 
+set file_type=.%file_type%
 
 :git
 
@@ -43,16 +60,16 @@ md tmp >nul
 copy download.ps1 tmp\download.ps1 >nul
 
 :: Adds Repo Link and Destination Path to tmp\Download.ps1 ::
-echo download %cd%\tmp\%file_name%.%file_type% %repo% >> tmp\download.ps1
+echo download %cd%\tmp\%file_name%%file_type% %repo% >> tmp\download.ps1
 
 :: Runs Downloader ::
 powershell.exe -File tmp\download.ps1
 
 :: Copies Downloaded file to Destination Path ::
-copy %cd%\tmp\%file_name%.%file_type% %dir% /Y >nul
+copy %cd%\tmp\%file_name%%file_type% %dir% /Y >nul
 
 :: Deleted Temporary Files ::
-del /F /Q tmp\%file_name%.%file_type%
+del /F /Q tmp\%file_name%%file_type%
 del /F /Q tmp\download.ps1
 
 :: Deletes tmp Folder ::
