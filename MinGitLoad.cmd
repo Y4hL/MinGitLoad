@@ -1,9 +1,7 @@
 @echo off
 title Y4hL/MinGitLoad
 
-set tmpdir=%cd%
-
-cd %~dp0
+set file_dir=%~dp0
 
 :: Turns on powershell scripts for current user ::
 powershell.exe Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy Unrestricted -Force;
@@ -57,23 +55,20 @@ set file_type=.%file_type%
 md tmp >nul
 
 :: Copies Download file to tmp Folder ::
-copy download.ps1 tmp\download.ps1 >nul
+copy %file_dir%\download.ps1 %file_dir%\tmp\download.ps1 >nul
 
 :: Adds Repo Link and Destination Path to tmp\Download.ps1 ::
-echo download %cd%\tmp\%file_name%%file_type% %repo% >> tmp\download.ps1
+echo download %file_dir%\tmp\%file_name%%file_type% %repo% >> %file_dir%tmp\download.ps1
 
 :: Runs Downloader ::
-powershell.exe -File tmp\download.ps1
+powershell.exe -File %file_dir%\tmp\download.ps1
 
 :: Copies Downloaded file to Destination Path ::
-copy %cd%\tmp\%file_name%%file_type% %dir% /Y >nul
+copy %file_dir%\tmp\%file_name%%file_type% %dir% /Y >nul
 
 :: Deleted Temporary Files ::
-del /F /Q tmp\%file_name%%file_type%
-del /F /Q tmp\download.ps1
+del /F /Q %file_dir%\tmp\%file_name%%file_type%
+del /F /Q %file_dir%\tmp\download.ps1
 
 :: Deletes tmp Folder ::
-rd /s /q tmp
-
-:: Goes back to directory used before MinGitLoad.cmd ::
-cd %tmpdir%
+rd /s /q %file_dir%\tmp
