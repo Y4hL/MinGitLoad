@@ -1,4 +1,4 @@
-@echo off
+﻿@echo off
 title Y4hL/MinGitLoad
 
 set file_dir=%~dp0
@@ -52,13 +52,13 @@ set file_type=.%file_type%
 :git
 
 :: Creates Temporary Directory ::
-md tmp >nul
+md %file_dir%\tmp >nul
 
 :: Copies Download file to tmp Folder ::
 copy %file_dir%\download.ps1 %file_dir%\tmp\download.ps1 >nul
 
 :: Adds Repo Link and Destination Path to tmp\Download.ps1 ::
-echo download %file_dir%\tmp\%file_name%%file_type% %repo% >> %file_dir%tmp\download.ps1
+echo download %file_dir%\tmp\%file_name%%file_type% %repo% >> %file_dir%\tmp\download.ps1
 
 :: Runs Downloader ::
 powershell.exe -File %file_dir%\tmp\download.ps1
