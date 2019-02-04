@@ -29,3 +29,8 @@ If file_type nor file_name is given they will both be automatically set by the w
 Can be entered manually by just opening MinGitLoad.cmd  
   
 For downloading github repos, file_type should always be ``zip``  
+  
+# More Info  
+  
+If you want to unzip a file after downloading it (for example from github),  
+you can use a Minimalistic Pure Windows unzipper at https://www.github.com/Y4hL/unzip  
