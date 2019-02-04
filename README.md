@@ -15,7 +15,7 @@ If file type is not given, it will be automatiacally be the same type as the web
   
 If file_type nor file_name is given they will both be automatically set by the website download  
   
-Examples:  
+# Examples:  
   
 ``MinGitLoad.cmd github.com/y4hl/mingitload/archive/master.zip %userprofile%\desktop``  
 >> Downloads File as master.zip  
