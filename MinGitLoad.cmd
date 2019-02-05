@@ -1,4 +1,4 @@
-﻿@echo off
+@echo off
 title Y4hL/MinGitLoad
 
 set file_dir=%~dp0
@@ -40,7 +40,7 @@ goto git
 set /p repo=Clone: 
 
 :: Asks for destination ::
-set /p dir=Download Path: ´
+set /p dir=Download Path: �
 
 :: Asks for file name ::
 set /p file_name=File Name: 
