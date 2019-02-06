@@ -53,6 +53,8 @@ set file_type=.%file_type%
 
 :git
 
+If NOT exist "%dir%" md "%dir%"
+
 :: Creates Temporary Directory ::
 md %file_dir%\%notcalledaglobalvariable% >nul
 
