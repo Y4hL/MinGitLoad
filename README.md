@@ -11,7 +11,8 @@ Works on any type of file on any website
   
 ``MinGitLoad.cmd website save_directory file_name file_type``  
   
-Do NOT use single or double quotes around parameters  
+Using Single or Double Quotes around paramters is recommended  
+**NOTE:** When there are spaces in a paramter, Single/Double Quotes are required!  
   
 If file type is not given, it will be automatiacally be the same type as the websites download  
   

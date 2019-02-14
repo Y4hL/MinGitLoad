@@ -49,7 +49,20 @@ set /p file_name=File Name:
 
 :: Asks for file type (example: txt, zip) ::
 set /p file_type=File Type (Example: txt, zip): 
-set file_type=.%file_type%
+
+
+:: Adds dot and removes Double Quotes from file_type paramter ::
+set file_type=.%file_type:"=%
+:: Removes Single Quotes from file_type parameter ::
+set file_type=%file_type:'=%
+
+:: Removes Double Quotes from file_name parameter ::
+set file_name=%file_name:"=%
+:: Removes Single Quotes from file_name paramter
+set file_name=%file_name:'=%
+
+
+
 
 :git
 
