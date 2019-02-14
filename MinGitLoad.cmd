@@ -51,15 +51,26 @@ set /p file_name=File Name:
 set /p file_type=File Type (Example: txt, zip): 
 
 
-:: Adds dot and removes Double Quotes from file_type paramter ::
-set file_type=.%file_type:"=%
-:: Removes Single Quotes from file_type parameter ::
-set file_type=%file_type:'=%
+
+:: Removed Double Quotes from repo parameter ::
+set repo=%repo:"=%
+:: Removed Single Quotes from repo parameter ::
+set repo=%repo:'=%
+
+:: Removed Double Quotes from dir parameter ::
+set dir=%dir:"=%
+:: Removed Single Quotes from dir parameter ::
+set dir=%dir:'=%
 
 :: Removes Double Quotes from file_name parameter ::
 set file_name=%file_name:"=%
 :: Removes Single Quotes from file_name paramter
 set file_name=%file_name:'=%
+
+:: Adds dot and removes Double Quotes from file_type paramter ::
+set file_type=.%file_type:"=%
+:: Removes Single Quotes from file_type parameter ::
+set file_type=%file_type:'=%
 
 
 
