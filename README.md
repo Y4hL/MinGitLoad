@@ -9,7 +9,7 @@ Works on any type of file on any website
 
 # Format:  
   
-``MinGitLoad.cmd website save_directory file_name file_type``  
+``"path\MinGitLoad.cmd" "website" "save_directory" "file_name" "file_type"``  
   
 Using Single or Double Quotes around paramters is recommended  
 **NOTE:** When there are spaces in a paramter, Single/Double Quotes are required!  
