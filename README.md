@@ -20,13 +20,13 @@ If file_type nor file_name is given they will both be automatically set by the w
   
 # Examples:  
   
-``MinGitLoad.cmd github.com/y4hl/mingitload/archive/master.zip %userprofile%\desktop``  
+``"path\MinGitLoad.cmd" "github.com/y4hl/mingitload/archive/master.zip" "%userprofile%\desktop"``  
 >> Downloads File as master.zip  
   
-``MinGitLoad.cmd github.com/y4hl/mingitload/archive/master.zip %userprofile%\desktop Package``  
+``"path\MinGitLoad.cmd" "github.com/y4hl/mingitload/archive/master.zip" "%userprofile%\desktop" "Package"``  
 >> Downloads File as Package.zip  
   
-``MinGitLoad.cmd github.com/y4hl/mingitload/archive/master.zip %userprofile%\desktop Package txt``  
+``"path\MinGitLoad.cmd" "github.com/y4hl/mingitload/archive/master.zip" "%userprofile%\desktop" "Package" "txt"``  
 >> Downloads File as Package.txt  
   
 Can be entered manually by just opening MinGitLoad.cmd  
