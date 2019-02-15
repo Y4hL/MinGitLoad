@@ -12,7 +12,7 @@ IF [%2] == [] goto :ask
 IF [%3] == [] (
 
     :: Sets file name and type automatically, if no name or type is given ::
-    set mingitload_file_type=.%~x1
+    set mingitload_file_type=%~x1
     set mingitload_file_name=%~n1
 
     goto :auto
@@ -20,7 +20,7 @@ IF [%3] == [] (
 IF [%4] == [] (
 
     :: Sets file type automatically, if no type is given ::
-    set mingitload_file_type=.%~x1
+    set mingitload_file_type=%~x1
 
     goto :name
 )
