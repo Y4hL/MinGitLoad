@@ -1,9 +1,11 @@
 @echo off
 title Y4hL/MinGitLoad
 
+:: Assigns Current Files Directory to a variable ::
 set file_dir=%~dp0
 
-set notcalledaglobalvariable=%random%
+:: Assigns random number to a variable ::
+set tmprandom=%random%
 
 :: Turns on powershell scripts for current user ::
 powershell.exe Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy Unrestricted -Force;
@@ -78,23 +80,23 @@ set file_type=%file_type:'=%
 If NOT exist "%dir%" md "%dir%"
 
 :: Creates Temporary Directory ::
-md "%file_dir%\%notcalledaglobalvariable%" >nul
+md "%file_dir%\%tmprandom%" >nul
 
-:: Copies Download file to %notcalledaglobalvariable% Folder ::
-copy "%file_dir%\download.ps1" "%file_dir%\%notcalledaglobalvariable%\download.ps1" >nul
+:: Copies Download file to %tmprandom% Folder ::
+copy "%file_dir%\download.ps1" "%file_dir%\%tmprandom%\download.ps1" >nul
 
-:: Adds Repo Link and Destination Path to %notcalledaglobalvariable%\Download.ps1 ::
-echo download "%file_dir%\%notcalledaglobalvariable%\%file_name%%file_type%" "%repo%" >> "%file_dir%\%notcalledaglobalvariable%\download.ps1"
+:: Adds Repo Link and Destination Path to %tmprandom%\Download.ps1 ::
+echo download "%file_dir%\%tmprandom%\%file_name%%file_type%" "%repo%" >> "%file_dir%\%tmprandom%\download.ps1"
 
 :: Runs Downloader ::
-powershell.exe -File "%file_dir%\%notcalledaglobalvariable%\download.ps1"
+powershell.exe -File "%file_dir%\%tmprandom%\download.ps1"
 
 :: Copies Downloaded file to Destination Path ::
-copy "%file_dir%\%notcalledaglobalvariable%\%file_name%%file_type%" "%dir%" /Y >nul
+copy "%file_dir%\%tmprandom%\%file_name%%file_type%" "%dir%" /Y >nul
 
 :: Deleted Temporary Files ::
-del /F /Q "%file_dir%\%notcalledaglobalvariable%\%file_name%%file_type%"
-del /F /Q "%file_dir%\%notcalledaglobalvariable%\download.ps1"
+del /F /Q "%file_dir%\%tmprandom%\%file_name%%file_type%"
+del /F /Q "%file_dir%\%tmprandom%\download.ps1"
 
-:: Deletes %notcalledaglobalvariable% Folder ::
-rd /s /q "%file_dir%\%notcalledaglobalvariable%"
+:: Deletes %tmprandom% Folder ::
+rd /s /q "%file_dir%\%tmprandom%"
