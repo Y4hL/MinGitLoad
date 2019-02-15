@@ -1,4 +1,4 @@
-
+@echo off
 title Y4hL/MinGitLoad
 
 :: Assigns random number to a variable ::
