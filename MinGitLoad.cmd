@@ -1,4 +1,4 @@
-@echo off
+
 title Y4hL/MinGitLoad
 
 :: Assigns random number to a variable ::
@@ -12,7 +12,7 @@ IF [%2] == [] goto :ask
 IF [%3] == [] (
 
     :: Sets file name and type automatically, if no name or type is given ::
-    set mingitload_file_type=%~x1
+    set mingitload_file_type=.%~x1
     set mingitload_file_name=%~n1
 
     goto :auto
@@ -20,7 +20,7 @@ IF [%3] == [] (
 IF [%4] == [] (
 
     :: Sets file type automatically, if no type is given ::
-    set mingitload_file_type=%~x1
+    set mingitload_file_type=.%~x1
 
     goto :name
 )
@@ -49,6 +49,8 @@ set /p mingitload_file_name=File Name:
 :: Asks for file type (example: txt, zip) ::
 set /p mingitload_file_type=File Type (Example: txt, zip): 
 
+:: Adds dot to file type ::
+set mingitload_file_type=.%mingitload_file_type%
 
 :git
 
@@ -68,8 +70,8 @@ set mingitload_file_name=%mingitload_file_name:"=%
 :: Removes Single Quotes from mingitload_file_name paramter
 set mingitload_file_name=%mingitload_file_name:'=%
 
-:: Adds dot and removes Double Quotes from mingitload_file_type paramter ::
-set mingitload_file_type=.%mingitload_file_type:"=%
+:: Removes Double Quotes from mingitload_file_type paramter ::
+set mingitload_file_type=%mingitload_file_type:"=%
 :: Removes Single Quotes from mingitload_file_type parameter ::
 set mingitload_file_type=%mingitload_file_type:'=%
 
