@@ -51,6 +51,8 @@ set /p file_name=File Name:
 set /p file_type=File Type (Example: txt, zip): 
 
 
+:git
+
 
 :: Removed Double Quotes from repo parameter ::
 set repo=%repo:"=%
@@ -72,10 +74,6 @@ set file_type=.%file_type:"=%
 :: Removes Single Quotes from file_type parameter ::
 set file_type=%file_type:'=%
 
-
-
-
-:git
 
 If NOT exist "%dir%" md "%dir%"
 
