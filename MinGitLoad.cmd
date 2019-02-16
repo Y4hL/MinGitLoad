@@ -59,7 +59,7 @@ set mingitload_file_type=%mingitload_file_type:"=%
 :: Removes Single Quotes from mingitload_file_type parameter ::
 set mingitload_file_type=%mingitload_file_type:'=%
 
-
+:: Creates Destination Directory ::
 If NOT exist "%mingitload_dir%" md "%mingitload_dir%"
 
 :: Creates Temporary Directory ::
