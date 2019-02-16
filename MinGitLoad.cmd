@@ -87,7 +87,7 @@ rd /s /q "%~dp0\%tmprandom%" >nul
 :: Goes to the End of File
 goto :eof
 
-:: Help Message::
+:: Help Message ::
 :help
 
 echo.
