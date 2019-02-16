@@ -14,6 +14,8 @@ Works on any type of file on any website
 Using Single or Double Quotes around paramters is recommended  
 **NOTE:** When there are spaces in a paramter, Single/Double Quotes are required!  
   
+replace "website" with /? for help  
+  
 If file type is not given, it will be automatiacally be the same type as the websites download  
   
 If file_type nor file_name is given they will both be automatically set by the website download  
@@ -29,9 +31,7 @@ If file_type nor file_name is given they will both be automatically set by the w
 ``"path\MinGitLoad.cmd" "github.com/y4hl/mingitload/archive/master.zip" "%userprofile%\desktop" "Package" "txt"``  
 >> Downloads File as Package.txt  
   
-Can be entered manually by just opening MinGitLoad.cmd  
-  
-For downloading github repos, file_type should always be ``zip``  
+For downloading github repos, file_type should always be ``zip`` or set automatically  
   
 # More Info  
   

@@ -7,8 +7,11 @@ set tmprandom=%random%
 :: Turns on powershell scripts for current user ::
 powershell.exe Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy Unrestricted -Force;
 
-IF [%1] == [] goto :ask
-IF [%2] == [] goto :ask
+:: Checks if first parameter is the /? switch ::
+IF [%1] == [/?] goto :help
+
+IF [%1] == [] goto :eof
+IF [%2] == [] goto :eof
 IF [%3] == [] (
 
     :: Sets file name and type automatically, if no name or type is given ::
@@ -26,33 +29,13 @@ IF [%4] == [] (
 )
 
 :: IF values are given already, skips asking for values ::
-set mingitload_file_type=.%4
+set mingitload_file_type=%4
+set mingitload_file_type=.%mingitload_file_type:.=%
 :name
 set mingitload_file_name=%3
 :auto
 set mingitload_dir=%2
 set mingitload_repo=%1
-
-
-goto git
-:ask
-
-:: Asks for Link to Repo ::
-set /p mingitload_repo=Clone: 
-
-:: Asks for destination ::
-set /p mingitload_dir=Download Path: 
-
-:: Asks for file name ::
-set /p mingitload_file_name=File Name: 
-
-:: Asks for file type (example: txt, zip) ::
-set /p mingitload_file_type=File Type (Example: txt, zip): 
-
-:: Adds dot to file type ::
-set mingitload_file_type=.%mingitload_file_type%
-
-:git
 
 
 :: Removed Double Quotes from Repo parameter ::
@@ -99,3 +82,50 @@ del /F /Q "%~dp0\%tmprandom%\download.ps1"
 
 :: Deletes %tmprandom% Folder ::
 rd /s /q "%~dp0\%tmprandom%"
+
+:: Goes to the End of File
+goto :eof
+
+:: Help Message::
+:help
+
+echo.
+echo Pure Windows Minimalistic File Downloader 
+echo.
+echo # Format
+echo.
+echo [] : Required Parameters
+echo () : Optional Parameters
+echo.
+echo "path\MinGitLoad" "[Link]" "[Destination]" "(File Name)" "(File Type)"
+echo.
+echo [Link] : Link to file download {example: github.com/Y4hL/MinGitLoad/archive/master.zip}
+echo [Destination] : File Download Destination {example: %userprofile%\Desktop}
+echo (File Name) : Name that the file should be saved as {example: README}
+echo (File Type) : File Extension {example: zip, txt}
+echo.
+echo If file type is not given, it will be automatiacally extracted from the download link
+echo.
+echo If file_type nor file_name is given they will both be automatically extracted from the download link
+echo.
+echo Single and Double Quotes around parameters are strongly recommended!
+echo NOTE: Except when using the /? parameter!
+echo.
+echo You can replace "[Link]" with /? for this message
+echo When inputting /? as the first parameter, the other parameters can stay empty
+pause
+echo.
+echo # Examples:
+echo.
+echo "path\MinGitLoad.cmd" "github.com/y4hl/mingitload/archive/master.zip" "%userprofile%\desktop"
+echo ^>^> Downloads File as master.zip  
+echo.
+echo "path\MinGitLoad.cmd" "github.com/y4hl/mingitload/archive/master.zip" "%userprofile%\desktop" "Package"
+echo ^>^> Downloads File as Package.zip  
+echo.  
+echo "path\MinGitLoad.cmd" "github.com/y4hl/mingitload/archive/master.zip" "%userprofile%\desktop" "Package" "txt"
+echo ^>^> Downloads File as Package.txt  
+echo.
+
+:: End of File ::
+:eof
