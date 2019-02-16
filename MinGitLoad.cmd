@@ -10,6 +10,7 @@ powershell.exe Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy Unrestric
 :: Checks if first parameter is the /? switch ::
 IF [%1] == [/?] goto :help
 
+:: Checks if/which parameters are empty ::
 IF [%1] == [] goto :eof
 IF [%2] == [] goto :eof
 IF [%3] == [] (
@@ -77,11 +78,11 @@ powershell.exe -File "%~dp0\%tmprandom%\download.ps1"
 copy "%~dp0\%tmprandom%\%mingitload_file_name%%mingitload_file_type%" "%mingitload_dir%" /Y >nul
 
 :: Deleted Temporary Files ::
-del /F /Q "%~dp0\%tmprandom%\%mingitload_file_name%%mingitload_file_type%"
-del /F /Q "%~dp0\%tmprandom%\download.ps1"
+del /F /Q "%~dp0\%tmprandom%\%mingitload_file_name%%mingitload_file_type%" >nul
+del /F /Q "%~dp0\%tmprandom%\download.ps1" >nul
 
 :: Deletes %tmprandom% Folder ::
-rd /s /q "%~dp0\%tmprandom%"
+rd /s /q "%~dp0\%tmprandom%" >nul
 
 :: Goes to the End of File
 goto :eof
