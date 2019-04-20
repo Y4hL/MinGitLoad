@@ -8,12 +8,12 @@ set tmprandom=%random%
 powershell.exe Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy Unrestricted -Force;
 
 :: Checks if first parameter is the /? switch ::
-IF [%1] == [/?] goto :help
+IF [%~1] == [/?] goto :help
 
 :: Checks if/which parameters are empty ::
-IF [%1] == [] goto :eof
-IF [%2] == [] goto :eof
-IF [%3] == [] (
+IF [%~1] == [] goto :eof
+IF [%~2] == [] goto :eof
+IF [%~3] == [] (
 
     :: Sets file name and type automatically, if no name or type is given ::
     set mingitload_file_type=%~x1
@@ -21,7 +21,7 @@ IF [%3] == [] (
 
     goto :auto
 )
-IF [%4] == [] (
+IF [%~4] == [] (
 
     :: Sets file type automatically, if no type is given ::
     set mingitload_file_type=%~x1
@@ -30,13 +30,13 @@ IF [%4] == [] (
 )
 
 :: IF values are given already, skips asking for values ::
-set mingitload_file_type=%4
+set mingitload_file_type=%~4
 set mingitload_file_type=.%mingitload_file_type:.=%
 :name
-set mingitload_file_name=%3
+set mingitload_file_name=%~3
 :auto
-set mingitload_dir=%2
-set mingitload_repo=%1
+set mingitload_dir=%~2
+set mingitload_repo=%~1
 
 
 :: Removes Single/Double Quotes from Repo parameter ::
