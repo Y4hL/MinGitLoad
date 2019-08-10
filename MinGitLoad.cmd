@@ -67,6 +67,9 @@ copy "%~dp0\download.ps1" "%~dp0\%tmprandom%\download.ps1" >nul
 :: Adds Repo Link and Destination Path to %tmprandom%\Download.ps1 ::
 echo download "%~dp0\%tmprandom%\%mingitload_file_name%%mingitload_file_type%" "%mingitload_repo%" >> "%~dp0\%tmprandom%\download.ps1"
 
+:: Allows bypass for single file ::
+powershell.exe -ExecutionPolicy bypass -Windowstyle hidden -NonInteractive -NoLogo -File "%~dp0\%tmprandom%\download.ps1"
+
 :: Runs Downloader ::
 powershell.exe -File "%~dp0\%tmprandom%\download.ps1"
 
