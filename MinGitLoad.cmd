@@ -5,7 +5,7 @@ title Y4hL/MinGitLoad
 set tmprandom=%random%
 
 :: Turns on powershell scripts for current user ::
-powershell.exe Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy Unrestricted -Force;
+powershell.exe Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy Bypass -Force;
 
 :: Checks if first parameter is the /? switch ::
 IF [%~1] == [/?] goto :help
