@@ -61,23 +61,13 @@ If NOT exist "%mingitload_dir%" md "%mingitload_dir%"
 :: Creates Temporary Directory ::
 md "%~dp0\%tmprandom%" >nul
 
-:: Copies Download file to %tmprandom% Folder ::
-copy "%~dp0\download.ps1" "%~dp0\%tmprandom%\download.ps1" >nul
-
 :: Adds Repo Link and Destination Path to %tmprandom%\Download.ps1 ::
-echo download "%~dp0\%tmprandom%\%mingitload_file_name%%mingitload_file_type%" "%mingitload_repo%" >> "%~dp0\%tmprandom%\download.ps1"
-
-:: Allows bypass for single file ::
-powershell.exe -ExecutionPolicy bypass -Windowstyle hidden -NonInteractive -NoLogo -File "%~dp0\%tmprandom%\download.ps1"
+echo Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy Bypass -Force; $c = New-Object System.Net.WebClient; $c.DownloadFile('%mingitload_repo%', '%mingitload_dir%\%mingitload_file_name%%mingitload_file_type%') >> "%~dp0\%tmprandom%\download.ps1"
 
 :: Runs Downloader ::
 powershell.exe -File "%~dp0\%tmprandom%\download.ps1"
 
-:: Copies Downloaded file to Destination Path ::
-copy "%~dp0\%tmprandom%\%mingitload_file_name%%mingitload_file_type%" "%mingitload_dir%" /Y >nul
-
-:: Deleted Temporary Files ::
-del /F /Q "%~dp0\%tmprandom%\%mingitload_file_name%%mingitload_file_type%" >nul
+:: Deletes Temporary Files ::
 del /F /Q "%~dp0\%tmprandom%\download.ps1" >nul
 
 :: Deletes %tmprandom% Folder ::
