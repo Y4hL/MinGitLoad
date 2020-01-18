@@ -2,7 +2,8 @@
   
 Minimalistic File Downloader for Windows  
   
-Basic ``git clone`` for Windows  
+Basic ``wget`` for Windows  
+With no extra downloads!  
   
 Only uses built in Windows file types  
 Works on any type of file on any website
